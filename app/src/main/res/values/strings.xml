@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Arenda</string>
+    <string-array name="spiner_city">
+        <item>Ростов-на-дону</item>
+        <item>Москва</item>
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="addphoto">addPhoto</string>
+    <string name="newOb">Новое объявление</string>
+    <string name="addrestext">Адрес</string>
+    <string name="addres_edit">Введите адрес и номер дома</string>
+    <string name="area_text">Район</string>
+    <string name="change_area">Выберите район</string>
+    <string name="text_room">Количество комнат</string>
+    <string name="edit_room">Введите колличество комнат</string>
+    <string name="text_floor">Этаж</string>
+    <string name="hint_room">Введите этаж</string>
+    <string name="text_space">Общая площадь, м²</string>
+    <string name="hint_space">Введите площадь</string>
+    <string name="description_text">Описание</string>
+    <string name="hint_description">Описание</string>
+    <string name="text_price">Цена за месяц, ₽</string>
+    <string name="hint_price">Введите цену за месяц, ₽</string>
+    <string name="text_photo">Фотографии</string>
+    <string name="add_button">Добавить объявление</string>
+    <string name="area_vorosh">Ворошиловский район</string>
+    <string name="area_2">Железнодорожный район</string>
+    <string name="area_3">Кировский район</string>
+    <string name="area_4">Ленинский район</string>
+    <string name="area_5">Октябрьский район</string>
+    <string name="area_6">Пролетарский район</string>
+    <string name="area_7">Первомайский район</string>
+    <string name="area_8">Советский район</string>
+    <string name="area">Район</string>
+    <string name="close_discrip">close</string>
+    <string name="set_type">set_type</string>
+    <string name="room">комната</string>
+    <string name="homee">квартира</string>
+    <string name="change_type">Выберите тип:</string>
+    <string name="register">зарегистрироваться</string>
+    <string name="name_edit">Введите имя</string>
+    <string name="second_name_edit">Введите фамилию</string>
+    <string name="phone_number_edit">Введите номер телефона</string>
+    <string name="email_edit">Введите email</string>
+    <string name="pas_edit">Введите пароль</string>
+    <string name="pass_again_edit">Введите пароль еще раз</string>
+    <string name="text_name">Имя</string>
+    <string name="text_second_name">Фамилия</string>
+    <string name="text_phone_number">Номер телефона</string>
+    <string name="text_email">Email</string>
+    <string name="text_pass">Пароль</string>
+    <string name="text_pass_again">Повторите пароль</string>
+    <string name="sech_text">Поиск</string>
+    <string name="add_text">Добавить</string>
+    <string name="favorite_text">Избранное</string>
+    <string name="text_profile">Профиль</string>
+    <string name="todo4">TODO</string>
+    <string name="todo1">TODO</string>
+</resources>

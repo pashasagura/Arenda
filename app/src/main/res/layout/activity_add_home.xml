@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".addHome">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView6"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_margin="5dp"
+        android:background="#FFFFFF"
+        app:cardBackgroundColor="@color/design_default_color_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="40dp"
+                android:layout_height="28dp"
+                android:onClick="back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back_image" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView6"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/textViewNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/newOb"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewAddres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/addrestext"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNew" />
+
+            <EditText
+                android:id="@+id/editTextPostalAddres"
+                style="@style/MyEditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="@string/addres_edit"
+                android:imeOptions="actionDone"
+                android:includeFontPadding="true"
+                android:inputType="textCapSentences|textPostalAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAddres" />
+
+            <TextView
+                android:id="@+id/textViewArea2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/area_text"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPostalAddres" />
+
+            <TextView
+                android:id="@+id/textViewAreaChange"
+                style="@style/MyEditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:onClick="createDialog"
+                android:text="@string/change_area"
+                android:textColor="#9f9f9f"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewArea2" />
+
+            <TextView
+                android:id="@+id/textViewRoom"
+                style="@style/TextAddHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/text_room"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAreaChange" />
+
+            <EditText
+                android:id="@+id/editTextRoom"
+                style="@style/MyEditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:hint="@string/edit_room"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRoom" />
+
+            <TextView
+                android:id="@+id/textViewFloor"
+                style="@style/TextAddHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/text_floor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextRoom" />
+
+            <EditText
+                android:id="@+id/editTextFloor"
+                style="@style/MyEditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:hint="@string/hint_room"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFloor" />
+
+            <TextView
+                android:id="@+id/textViewSpace"
+                style="@style/TextAddHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/text_space"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextFloor" />
+
+            <EditText
+                android:id="@+id/editTextSpace"
+                style="@style/MyEditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:hint="@string/hint_space"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSpace" />
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                style="@style/TextAddHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/description_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextSpace" />
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                style="@style/MyEditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:ems="10"
+
+                android:gravity="start|top"
+                android:hint="@string/hint_description"
+                android:inputType="textMultiLine|textCapSentences"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+            <TextView
+                android:id="@+id/textViewPrice2"
+                style="@style/TextAddHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/text_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
+
+            <EditText
+                android:id="@+id/editTextPrice"
+                style="@style/MyEditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="@string/hint_price"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPrice2" />
+
+            <TextView
+                android:id="@+id/textViewPhoto"
+                style="@style/TextAddHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/text_photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPrice" />
+
+
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="8dp"
+                android:addStatesFromChildren="true"
+                android:alwaysDrawnWithCache="true"
+                android:animateLayoutChanges="true"
+                android:animationCache="true"
+                android:clickable="false"
+                android:clipChildren="true"
+                android:clipToPadding="false"
+                android:duplicateParentState="true"
+                android:fadeScrollbars="false"
+                android:filterTouchesWhenObscured="false"
+                android:fitsSystemWindows="false"
+                android:focusableInTouchMode="false"
+
+                android:hapticFeedbackEnabled="false"
+                android:isScrollContainer="false"
+                android:keepScreenOn="false"
+                android:longClickable="false"
+                android:soundEffectsEnabled="false"
+                android:splitMotionEvents="false"
+                app:columnCount="3"
+                app:columnOrderPreserved="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPhoto"
+                app:rowOrderPreserved="false">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:layout_margin="8dp"
+                    android:contentDescription="@string/addphoto"
+                    app:srcCompat="@drawable/add" />
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <Button
+                android:id="@+id/buttonAddannouncement"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/add_button"
+                android:onClick="AddHomeButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_search"
+        android:title="@string/sech_text"
+        android:icon="@drawable/image_search"/>
+    <item android:id="@+id/action_settings"
+        android:title="@string/add_text"
+        android:icon="@drawable/image_add" />
+    <item android:id="@+id/action_navigation"
+        android:title="@string/favorite_text"
+        android:icon="@drawable/image_favorites"
+        />
+    <item android:id="@+id/action_navigation2"
+        android:title="@string/text_profile"
+        android:icon="@drawable/image_profile" />
+
+</menu>

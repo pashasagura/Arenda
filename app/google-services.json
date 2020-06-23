@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "338940256809",
+    "firebase_url": "https://arenda-71736.firebaseio.com",
+    "project_id": "arenda-71736",
+    "storage_bucket": "arenda-71736.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338940256809:android:b9415f738086119012f238",
+        "android_client_info": {
+          "package_name": "com.example.arenda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338940256809-ocsdu51bie08ehis67kngkstq73n4469.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.arenda",
+            "certificate_hash": "c530f881bfc2e6e4d58ec04ae371da5b71326e78"
+          }
+        },
+        {
+          "client_id": "338940256809-uga4ohqg5tkvi5f869nr6e1k3qlelgij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwsAC9E8RCVQQcUsdBVb8t7hk9tosSbkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338940256809-uga4ohqg5tkvi5f869nr6e1k3qlelgij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
