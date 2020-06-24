@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,21 +34,22 @@ import java.util.List;
 
 public class FavoriteFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    RecyclerAdapter recyclerAdapter;
-    FirebaseFirestore db;
-    FirebaseAuth firebaseAuth;
-    List<Home> homeList;
-    List<Home> myHomeList;
-    List<String> homeID;
-    UserProfile user;
-    List<String> myHomeID;
-    BottomNavigationView bottomNavigationView;
-    CardView cardViewFavoriteHome;
-    CardView cardViewMyHome;
-    View savedView;
+    private RecyclerView recyclerView;
+    private RecyclerAdapter recyclerAdapter;
+    private FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
+    private List<Home> homeList;
+    private List<Home> myHomeList;
+    private List<String> homeID;
+    private UserProfile user;
+    private List<String> myHomeID;
+    private BottomNavigationView bottomNavigationView;
+    private CardView cardViewFavoriteHome;
+    private CardView cardViewMyHome;
+    private View savedView;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private int i = 1;
 
 
     @Override
@@ -59,8 +61,8 @@ public class FavoriteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if(savedView==null) {
-            savedView =  inflater.inflate(R.layout.fragment_favorite, container, false);
+        if (savedView == null) {
+            savedView = inflater.inflate(R.layout.fragment_favorite, container, false);
         }
 
         return savedView;
@@ -73,13 +75,16 @@ public class FavoriteFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         cardViewMyHome = getActivity().findViewById(R.id.cardViewMyHome);
         cardViewFavoriteHome = getActivity().findViewById(R.id.cardViewFavoriteHome);
+        if(i==1){
         cardViewFavoriteHome.setCardBackgroundColor(Color.GRAY);
+        cardViewMyHome.setCardBackgroundColor(Color.WHITE);}
         progressBar = getActivity().findViewById(R.id.progressBarFavorite);
         swipeRefreshLayout = getActivity().findViewById(R.id.swipeContainerMain);
 
         cardViewMyHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i = 2;
                 progressBar.setVisibility(View.VISIBLE);
                 getMyHomeList();
                 cardViewMyHome.setCardBackgroundColor(Color.GRAY);
@@ -89,6 +94,7 @@ public class FavoriteFragment extends Fragment {
         cardViewFavoriteHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i = 1;
                 cardViewFavoriteHome.setCardBackgroundColor(Color.GRAY);
                 cardViewMyHome.setCardBackgroundColor(Color.WHITE);
                 progressBar.setVisibility(View.VISIBLE);
@@ -99,80 +105,92 @@ public class FavoriteFragment extends Fragment {
         myHomeID = new ArrayList<>();
         myHomeList = new ArrayList<>();
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
-        if(recyclerView==null || recyclerAdapter == null ) {
-        createRecyclerView();
-            db.collection("UserProfile").document(firebaseAuth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    user = task.getResult().toObject(UserProfile.class);
-                    homeID = user.getFavoritesHome();
-                    myHomeID = user.getMyHome();
 
+        db.collection("UserProfile").document(firebaseAuth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                user = task.getResult().toObject(UserProfile.class);
+                homeID = user.getFavoritesHome();
+                myHomeID = user.getMyHome();
+                if (recyclerView == null || recyclerAdapter == null) {
+                    createRecyclerView();
                     getHomeList();
                 }
-            });
 
-        }
+
+            }
+        });
+
 
         bottomNavigationView.getMenu().getItem(2).setChecked(true);
 
-        progressBar.setVisibility(View.VISIBLE);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Toast.makeText(getContext(), cardViewFavoriteHome.getCardBackgroundColor().toString(), Toast.LENGTH_SHORT).show();
+                if (i == 1) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    getHomeList();
+
+                } else if (i == 2) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    getMyHomeList();
+                }
+
             }
         });
-
 
 
     }
 
 
     private void getHomeList() {
+        progressBar.setVisibility(View.VISIBLE);
         homeList.clear();
         for (String id : homeID) {
-             if(id.equals(homeID.get(homeID.size()-1)) ) {
-            db.collection("HomeList").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    Home home1 = task.getResult().toObject(Home.class);
-                    homeList.add(home1);
-                    recyclerAdapter.setHomeList(homeList);
-                }
-            }); }
-             else  {
-                 db.collection("HomeList").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                     @Override
-                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                         Home home1 = task.getResult().toObject(Home.class);
-                         homeList.add(home1);
-                         recyclerAdapter.setHomeList(homeList);
-                         progressBar.setVisibility(View.INVISIBLE);
-                     }
-                 });
+            if (id.equals(homeID.get(homeID.size() - 1))) {
+                db.collection("HomeList").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        Home home1 = task.getResult().toObject(Home.class);
+                        homeList.add(home1);
+                        recyclerAdapter.setHomeList(homeList);
+                    }
+                });
+            } else {
+                db.collection("HomeList").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        Home home1 = task.getResult().toObject(Home.class);
+                        homeList.add(home1);
+                        recyclerAdapter.setHomeList(homeList);
+                        progressBar.setVisibility(View.INVISIBLE);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
 
-             }
+            }
 
 
         }
     }
 
     private void getMyHomeList() {
+        progressBar.setVisibility(View.VISIBLE);
         myHomeList.clear();
         for (String id : myHomeID) {
-            if(id.equals( myHomeID.get(myHomeID.size()-1))) {
-            db.collection("HomeList").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    Home home1 = task.getResult().toObject(Home.class);
-                    myHomeList.add(home1);
-                    recyclerAdapter.setHomeList(myHomeList);
-                }
-            });}
+            if (id.equals(myHomeID.get(myHomeID.size() - 1))) {
 
-            else {
+                db.collection("HomeList").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        Home home1 = task.getResult().toObject(Home.class);
+                        myHomeList.add(home1);
+                        recyclerAdapter.setHomeList(myHomeList);
+                    }
+                });
+            } else {
+
                 db.collection("HomeList").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -180,6 +198,7 @@ public class FavoriteFragment extends Fragment {
                         myHomeList.add(home1);
                         recyclerAdapter.setHomeList(myHomeList);
                         progressBar.setVisibility(View.INVISIBLE);
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 });
 

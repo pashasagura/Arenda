@@ -59,4 +59,5 @@
     <string name="text_profile">Профиль</string>
     <string name="todo4">TODO</string>
     <string name="todo1">TODO</string>
+    <string name="text_login_or_register">Войдите или зарегистрируйтесь</string>
 </resources>

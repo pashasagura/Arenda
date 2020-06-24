@@ -34,8 +34,6 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth mAuth;
     private TextView textViewProfileName;
     private TextView getTextViewProfileEmail;
-    private TextView textTopBar1;
-    private TextView textTopBar2;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -50,20 +48,9 @@ public class ProfileFragment extends Fragment {
         super.onStart();
         textViewProfileName = getActivity().findViewById(R.id.textViewNameProfile);
         getTextViewProfileEmail = getActivity().findViewById(R.id.textViewEmailProfile);
-        textTopBar1 = getActivity().findViewById(R.id.textViewTopBar1);
-        textTopBar2 = getActivity().findViewById(R.id.textViewTopBar2);
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
         bottomNavigationView.getMenu().getItem(3).setChecked(true);
 
-        textTopBar1.setText("Личный кабинет");
-        textTopBar2.setVisibility(View.VISIBLE);
-        textTopBar2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                bottomNavigationView.setSelectedItemId(R.id.action_navigation2);
-            }
-        });
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         getUserInfo();

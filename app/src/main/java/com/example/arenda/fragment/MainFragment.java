@@ -42,8 +42,8 @@ public class MainFragment extends Fragment {
     private HorizontalScrollView horizontalScrollView;
     private List<Home> homeList;
     private SwipeRefreshLayout swipeContainer;
-    BottomNavigationView bottomNavigationView;
-    View view1;
+    private BottomNavigationView bottomNavigationView;
+    private View view1;
 
 
     @Override
